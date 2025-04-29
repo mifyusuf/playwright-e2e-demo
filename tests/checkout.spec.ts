@@ -1,12 +1,8 @@
 import { test, expect } from '@playwright/test';
+import { login } from '../helpers/login';
 
 test('complete a checkout process', async ({ page }) => {
-  await page.goto('/');
-  await page.fill('#user-name', 'standard_user');
-  await page.fill('#password', 'secret_sauce');
-  await page.click('#login-button');
-
-  await page.click('.inventory_item:first-child button');
+  await login(page);
   await page.click('.shopping_cart_link');
   await page.click('[data-test="checkout"]');
 
